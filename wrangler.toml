@@ -1,4 +1,4 @@
-name = "performancemedia-api-staging"
+name = "performancemedia"
 main = "src/index.js"
 compatibility_date = "2026-10-24"
 
