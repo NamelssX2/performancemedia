@@ -1,31 +1,37 @@
-PerformanceMedia — Cloudflare Pages Frontend Package
-===================================================
+PerformanceMedia — Complete Frontend
+===================================
 
-Included
---------
-- 14 static HTML pages from the approved source ZIP
-- Existing inline CSS/JavaScript and visual interactions preserved
-- Cloudflare Pages _headers file with baseline browser security headers
+Files
+-----
+index.html                 Homepage
+about-us.html              About Us
+offer-verticals.html       Offer verticals
+traffic-and-tracking.html  Traffic and tracking
+how-we-work.html           How we work
+networks.html              Networks directory
+partnerships.html          Partnerships and partner onboarding
+contact.html               Contact us
+faq.html                   Frequently asked questions
+terms-and-conditions.html  Terms and conditions
+privacy-policy.html        Privacy policy
+cookie-policy.html         Cookie policy
+disclaimer.html            Disclaimer
+affiliate-disclosure.html  Affiliate disclosure
 
-Deploy as a static site
------------------------
-1. Upload this project folder to a GitHub repository (keep the HTML files in the repository root).
-2. In Cloudflare Dashboard, open Workers & Pages > Create > Pages > Connect to Git.
-3. Select the repository.
-4. Framework preset: None
-5. Build command: leave blank
-6. Build output directory: / (repository root)
-7. Deploy and test the *.pages.dev URL.
+Preview
+-------
+Open index.html in a browser. Keep all HTML files together in the same folder so internal links work.
 
-Important scope notes
----------------------
-This is the frontend deployment package only. It does NOT contain a working admin login,
-backend API, database, or live content save/publish feature. Those must be built and securely
-configured in the next phase. Do not expose secrets in frontend HTML or JavaScript.
+Frontend scope
+--------------
+This is a static frontend package. It includes responsive layouts, page navigation, the homepage interactions, the original horizontal four-step campaign flow, Tiny Buddy and shared footer navigation. About Us is linked from the main navigation, homepage, and footer.
 
-Before public launch
---------------------
-- Confirm the real business email and replace placeholder addresses.
-- Review legal pages for your actual business practices and jurisdiction.
-- Test navigation, responsive layout, browser console, and all interactive controls.
-- Cloudflare Pages _headers are baseline protections, not a substitute for application security.
+Future admin-panel integration
+------------------------------
+The page structure and sections are organized for future content-management integration. This package does NOT yet include a backend, database, admin login, or live save/publish functionality. Those will be implemented in the next phase with a server-side API and database. For now, content changes still require editing the HTML files.
+
+Before publishing
+-----------------
+- Replace placeholder email addresses with a confirmed business email.
+- Review legal copy for the actual tools, data practices and applicable jurisdiction.
+- Verify all claims and partnership information before publishing.

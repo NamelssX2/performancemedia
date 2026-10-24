@@ -1,0 +1,12 @@
+name = "performancemedia"
+main = "src/index.js"
+compatibility_date = "2026-10-24"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+not_found_handling = "none"
+
+[vars]
+# Configure SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY as Worker runtime variables.
+# Never place a Supabase secret/service-role key in this file or browser code.
