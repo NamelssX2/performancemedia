@@ -10,8 +10,8 @@
 <section id="networksTab" class="hidden"><div class="panel"><div class="sectionhead"><h2>Networks</h2><button id="nnew">+ Add network</button></div><div id="nets" class="list"></div></div><div id="ne" class="panel hidden"><h2>Network editor</h2><form id="nf"><input id="nid" type="hidden"><div class="row"><div><label>Name</label><input id="nn" required></div><div><label>Slug</label><input id="ns" required></div></div><label>Description</label><textarea id="nd"></textarea><div class="row"><div><label>Website URL</label><input id="nw" type="url"></div><div><label>Application URL</label><input id="na" type="url"></div></div><div class="row"><div><label>Status</label><select id="nst"><option>published</option><option>draft</option></select></div><div><label>Sort order</label><input id="no" type="number" value="0"></div></div><p><button>Save network</button> <button type="button" id="ncancel" class="secondary">Cancel</button></p></form></div></section></main></div>
 <script>
 (()=>{const $=id=>document.getElementById(id),S={token:"",pages:[],faqs:[],nets:[]};
-const supabaseUrl=""; // SET Supabase project URL
-const anonKey=""; // SET public anon/publishable key only; NEVER secret key
+const supabaseUrl="https://tvtjtiugpqadbuxifjbm.supabase.co"; // SET Supabase project URL
+const anonKey="sb_publishable_jK94dc35UT6azuavG4a9bQ_vgUTl1W6"; // SET public anon/publishable key only; NEVER secret key
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const show=(id,v=true)=>$(id).classList.toggle("hidden",!v),msg=(t,err=false,where="msg")=>{show(where);$(where).textContent=t;$(where).classList.toggle("error",err)};
 async function api(path,opt={}){let r=await fetch(path,{...opt,headers:{"Content-Type":"application/json","Authorization":"Bearer "+S.token,...(opt.headers||{})}}),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||"Request failed "+r.status);return d}
