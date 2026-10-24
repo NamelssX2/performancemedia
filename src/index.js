@@ -122,16 +122,16 @@ async function api(request, env) {
 
     return json({ error: "Not found" }, 404);
 
-  } catch (error) {
-    console.error("API error:", error.message);
+} catch (error) {
+  console.error("API error:", error.stack || error.message || String(error));
 
-    return json(
-      {
-        error: "Backend request failed. Check Worker logs and Supabase configuration."
-      },
-      502
-    );
-  }
+  return json(
+    {
+      error: error.message || "Unknown backend error"
+    },
+    502
+  );
+}
 }
 
 export default {
