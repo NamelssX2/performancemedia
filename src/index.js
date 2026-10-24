@@ -1,3 +1,5 @@
+import { handleAdminApi } from "./admin-api.js";
+
 const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "cache-control": "no-store",
@@ -164,10 +166,16 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // API endpoints
-    if (url.pathname.startsWith("/api/")) {
-      return api(request, env);
-    }
+   // Admin API routes
+if (url.pathname.startsWith("/api/admin/")) {
+  const response = await handleAdminApi(request, env);
+  if (response) return response;
+}
+
+// Existing public API routes
+if (url.pathname.startsWith("/api/")) {
+  return api(request, env);
+}
 
     // Redirect /admin to /admin/
     if (url.pathname === "/admin") {
