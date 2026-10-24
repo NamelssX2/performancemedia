@@ -12,9 +12,13 @@ function json(data, status = 200, headers = {}) {
 }
 
 async function sbGet(env, path) {
-  if (!env.SUPABASE_URL || !env.SUPABASE_SECRET_KEY) {
-    throw new Error("Supabase runtime variables are not configured");
-  }
+ if (!env.SUPABASE_URL || !env.SUPABASE_SECRET_KEY) {
+  return json({
+    error: "Missing runtime binding",
+    hasUrl: Boolean(env.SUPABASE_URL),
+    hasSecret: Boolean(env.SUPABASE_SECRET_KEY)
+  }, 500);
+}
 
   const baseUrl = env.SUPABASE_URL.replace(/\/+$/, "");
   const response = await fetch(`${baseUrl}/rest/v1/${path}`, {
