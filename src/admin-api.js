@@ -45,5 +45,12 @@ export async function handleAdminApi(request,env) {
   if(x&&x[1]&&m==="PUT"){const b=await parseBody(request),d={};for(const k of ["name","slug","description","website_url","application_url"])if(k in b)d[k]=txt(b[k],k==="description"?5000:1000);if("slug"in d)d.slug=d.slug.toLowerCase().replace(/[^a-z0-9-]/g,"-");if("status"in b&&["draft","published"].includes(b.status))d.status=b.status;if(Number.isInteger(b.sort_order))d.sort_order=b.sort_order;if(!Object.keys(d).length)return adminJson({error:"No valid fields"},400);d.updated_at=new Date().toISOString();const a=await adminDb(env,"networks?id=eq."+encodeURIComponent(x[1]),{method:"PATCH",body:JSON.stringify(d)});return a.length?adminJson({data:a[0]}):adminJson({error:"Network not found"},404)}
   if(x&&x[1]&&m==="DELETE"){const a=await adminDb(env,"networks?id=eq."+encodeURIComponent(x[1]),{method:"DELETE"});return a.length?adminJson({ok:true}):adminJson({error:"Network not found"},404)}
   return adminJson({error:"Not found"},404);
- }catch(e){console.error("Admin API error",e?.message||e);return adminJson({error:"Admin API request failed"},500)}
+} catch (e) {
+  console.error("Admin API error:", e?.message || e);
+
+  return adminJson({
+    error: "Admin API request failed",
+    details: e?.message || String(e)
+  }, 500);
+}
 }
