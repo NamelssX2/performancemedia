@@ -173,6 +173,11 @@ if (url.pathname.startsWith("/api/admin/")) {
 }
 
 // Existing public API routes
+if (url.pathname.startsWith("/api/admin/")) {
+  const adminResponse = await handleAdminApi(request, env);
+  if (adminResponse) return adminResponse;
+}
+
 if (url.pathname.startsWith("/api/")) {
   return api(request, env);
 }
